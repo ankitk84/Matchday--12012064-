@@ -13,13 +13,7 @@ const Home = () => {
     const [items, setItems] = React.useState([]);
   const [page,setPage] = React.useState(0);
   const [hasMore,setHasMore] = React.useState(true);
-  const [searchValue,setsearchValue]=useState('');
-  const search=()=>{
-    
-  }
-  useEffect(()=>{
-search();
-  },[searchValue])
+
   const fetchData = (setItems, items) => {
  
   axios.get(`https://matchday.ai/referee/champ/fixture/dummy-matches?page=${page}`
