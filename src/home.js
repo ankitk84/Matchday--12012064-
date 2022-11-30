@@ -15,13 +15,7 @@ const Home = () => {
   const [hasMore,setHasMore] = React.useState(true);
   const [searchValue,setsearchValue]=useState('');
   const search=()=>{
-    const results = items.filter(obj => {
-
-      return  obj.team1[0].name.match(new RegExp(searchValue, "i"))|| obj.team2[0].name.match(new RegExp(searchValue, "i"))
-      || obj.tournament[0].name.match(new RegExp(searchValue, "i"));
-    });
-    setItems(results);
-    console.log(results,"search data");
+    
   }
   useEffect(()=>{
 search();
@@ -55,11 +49,7 @@ const refresh = (setItems) => {};
       </div>
        <div>
        <div className="searchbar">
-      <input onChange={(e)=>{
-        e.preventDefault();
-         setsearchValue(e.target.value);
-
-      }} type="text" placeholder="Search.." name="search"></input>
+      <input ></input>
        </div>
       
   </div>
