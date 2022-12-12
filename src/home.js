@@ -13,7 +13,19 @@ const Home = () => {
     const [items, setItems] = React.useState([]);
   const [page,setPage] = React.useState(0);
   const [hasMore,setHasMore] = React.useState(true);
+  const [searchValue,setsearchValue]=useState('');
+  const search=()=>{
+    const results = items.filter(obj => {
 
+      return  obj.team1[0].name.match(new RegExp(searchValue, "i"))|| obj.team2[0].name.match(new RegExp(searchValue, "i"))
+      || obj.tournament[0].name.match(new RegExp(searchValue, "i"));
+    });
+    setItems(results);
+    console.log(results,"search data");
+  }
+  useEffect(()=>{
+search();
+  },[searchValue])
   const fetchData = (setItems, items) => {
  
   axios.get(`https://matchday.ai/referee/champ/fixture/dummy-matches?page=${page}`
@@ -43,7 +55,11 @@ const refresh = (setItems) => {};
       </div>
        <div>
        <div className="searchbar">
-      <input ></input>
+      <input onChange={(e)=>{
+        e.preventDefault();
+         setsearchValue(e.target.value);
+
+      }} type="text" placeholder="Search.." name="search"></input>
        </div>
       
   </div>
